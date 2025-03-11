@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.project.TestBinary" tests="7" skipped="0" failures="0" errors="0" timestamp="2025-03-11T16:26:12" hostname="codespaces-14df47" time="0.024">
+  <properties/>
+  <testcase name="testBinarySearch_SingleElementArray_TargetFound()" classname="com.example.project.TestBinary" time="0.007"/>
+  <testcase name="testBinarySearch_TargetNotFound()" classname="com.example.project.TestBinary" time="0.001"/>
+  <testcase name="testBinarySearch_SingleElementArray_TargetNotFound()" classname="com.example.project.TestBinary" time="0.001"/>
+  <testcase name="testBinarySearch_TargetAtEnd()" classname="com.example.project.TestBinary" time="0.001"/>
+  <testcase name="testBinarySearch_TargetFound()" classname="com.example.project.TestBinary" time="0.001"/>
+  <testcase name="testBinarySearch_EmptyArray()" classname="com.example.project.TestBinary" time="0.0"/>
+  <testcase name="testBinarySearch_TargetAtStart()" classname="com.example.project.TestBinary" time="0.001"/>
+  <system-out><![CDATA[1 1 2 3 1 1 2 3 1 1 2 3 ]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

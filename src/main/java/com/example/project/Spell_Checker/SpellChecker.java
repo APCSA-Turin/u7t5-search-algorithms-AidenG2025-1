@@ -5,20 +5,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class SpellChecker {
+public class SpellChecker 
+{
     private ArrayList<String> dictionary;
     private int loopCounter = 0 ;
 
-    public SpellChecker() {
+    public SpellChecker() 
+    {
         dictionary = new ArrayList<String>();
         importDictionary();
     }
 
-    public ArrayList<String> getDictionary() {
+    public ArrayList<String> getDictionary() 
+    {
         return dictionary;
     }
 
-    public int getLoopCounter(){
+    public int getLoopCounter()
+    {
         return loopCounter;
     }
 
@@ -28,11 +32,14 @@ public class SpellChecker {
      *  It also tracks the number of words checked (loop iterations) and
      *  prints that value out before returning.
      */
-    public boolean linearSpellCheck(String word) {
-        loopCounter = 0; // for testing
-        for (String s : dictionary) {
-            loopCounter++; // for testing
-            if (word.equals(s)) {
+    public boolean linearSpellCheck(String word) 
+    {
+        loopCounter = 0; 
+        for (String s : dictionary) 
+        {
+            loopCounter++; 
+            if (word.equals(s)) 
+            {
                 System.out.println("-- LINEAR SEARCH: Number of words checked (loop iterations): " + loopCounter);
                 return true;
             }
@@ -50,21 +57,50 @@ public class SpellChecker {
      *  prints that value out before returning.
      */
     public boolean binarySpellCheck(String word) {
+        loopCounter = 0; // Reset loop counter
+        int leftIdx = 0;
+        int rightIdx = dictionary.size() - 1;
+
+        while (leftIdx <= rightIdx) 
+        {
+            loopCounter++; 
+            int middleIdx = leftIdx + (rightIdx - leftIdx) / 2;
+            int comparison = dictionary.get(middleIdx).compareTo(word);
+
+            if (comparison == 0) 
+            {
+                System.out.println("-- BINARY SEARCH: Number of words checked (loop iterations): " + loopCounter);
+                return true;
+            } 
+            else if (comparison < 0) 
+            {
+                leftIdx = middleIdx + 1;
+            } 
+            else 
+            {
+                rightIdx = middleIdx - 1;
+            }
+        }
+        System.out.println("-- BINARY SEARCH: Number of words checked (loop iterations): " + loopCounter);
         return false;
     }
 
     // private helper method, called in the constructor, which loads the words
     // from the dictionary.txt text file into the "dictionary" instance variable!
     private void importDictionary() {
-        try {
+        try 
+        {
             File myFile = new File("src/main/java/com/example/project/Spell_Checker/dictionary.txt");
             Scanner fileScanner = new Scanner(myFile);
-            while (fileScanner.hasNext()) {
+            while (fileScanner.hasNext()) 
+            {
                 String data = fileScanner.nextLine();
                 dictionary.add(data);
             }
             System.out.println("\ndictionary.txt file imported successfully!");
-        } catch (IOException e) {
+        } 
+        catch (IOException e) 
+        {
             System.out.println(e.getMessage());
         }
     }
@@ -79,10 +115,14 @@ public class SpellChecker {
         Scanner scan = new Scanner(System.in);
         String word = scan.nextLine();
 
-        while (!word.equals("q")) {
-            if (checker.binarySpellCheck(word)) {
+        while (!word.equals("q")) 
+        {
+            if (checker.binarySpellCheck(word)) 
+            {
                 System.out.println("-- " + word + " WAS found in the dictionary (so it's spelled correctly)");
-            } else {
+            } 
+            else 
+            {
                 System.out.println("-- " + word + " was NOT found in the dictionary (so it's not spelled correctly)");
             }
             System.out.print("Enter a word to look up or q to quit: ");
